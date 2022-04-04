@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Logo from './imagens/Embarque.png';
+
+import Footer from './Footer';
+
+import Home from './pages/Home';
+import Destinos from './pages/Destinos';
+import Promocoes from './pages/Promocoes';
+import Contato from './pages/Contato';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav>
+      <Link to={'/'}><img className='logo' src={Logo} alt='Logo'/></Link>
+        <Link className='links' to={'/'}>Página inicial</Link>
+        <Link className='links' to={'/destinos'}>Destinos</Link>
+        <Link className='links' to={'/promocoes'}>Promoções</Link>
+        <Link className='links' to={'/contato'}>Contato</Link>
+      </nav>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/destinos' element={<Destinos/>}/>
+        <Route path='/promocoes' element={<Promocoes/>}/>
+        <Route path='/contato' element={<Contato/>}/>
+      </Routes>
+      <Footer/>
+    </Router>
   );
 }
 
